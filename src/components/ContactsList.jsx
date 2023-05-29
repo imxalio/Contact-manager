@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ContactContext } from './ContactHomePage';
+import { ContactContext } from './App';
 import { Link } from 'react-router-dom';
 
 const ContactsList = () => {
