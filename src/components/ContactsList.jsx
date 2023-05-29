@@ -26,7 +26,9 @@ const ContactsList = () => {
               <div>
                 <li>
                   <span className="material-symbols-outlined">badge</span>
-                  <h2>{name}</h2>
+                  <Link className="links" to={`/contact/${id}`}>
+                    <h2>{name}</h2>
+                  </Link>
                 </li>
                 <li>
                   <span className="material-symbols-outlined">mail</span>

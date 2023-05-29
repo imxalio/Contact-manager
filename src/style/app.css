@@ -154,6 +154,30 @@ li {
   font-size: 3.6rem;
 }
 
+.contact-details {
+  margin: 0 4.4rem;
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  padding: 4.4rem;
+  background-color: white;
+}
+
+.contact-details h2 {
+  color: #1abc9c;
+}
+
+.contact-img {
+  width: 30%;
+  align-self: center;
+}
+
+img {
+  width: 100%;
+  border-radius: 50%;
+}
+
 @media (max-width: 70rem) {
   .list-container {
     grid-template-columns: 1fr;
