@@ -1,5 +1,6 @@
 import { useContext } from 'react';
-import { ContactContext } from './ContactContainer';
+import { ContactContext } from './ContactHomePage';
+import { Link } from 'react-router-dom';
 
 const ContactsList = () => {
   const { contacts, setContacts } = useContext(ContactContext);
@@ -10,39 +11,47 @@ const ContactsList = () => {
   };
 
   return (
-    <section className="list-container">
-      {contacts.map((user) => {
-        const { name, email, phoneNumber, note, id } = user;
-        return (
-          <div key={id} className="contact-info">
-            <div>
-              <li>
-                <span className="material-symbols-outlined">badge</span>
-                <h2>{name}</h2>
-              </li>
-              <li>
-                <span className="material-symbols-outlined">mail</span>
-                <p>{email}</p>
-              </li>
-              <li>
-                <span className="material-symbols-outlined">smartphone</span>
-                <p>{phoneNumber}</p>
-              </li>
-              <li>
-                <span className="material-symbols-outlined">mail</span>
-                <p>{note}</p>
-              </li>
+    <>
+      <div className="list-header">
+        <h1>Contact List</h1>
+        <Link to="add-contact">
+          <button className="btn">Add Contact</button>
+        </Link>
+      </div>
+      <section className="list-container">
+        {contacts.map((user) => {
+          const { name, email, phoneNumber, note, id } = user;
+          return (
+            <div key={id} className="contact-info">
+              <div>
+                <li>
+                  <span className="material-symbols-outlined">badge</span>
+                  <h2>{name}</h2>
+                </li>
+                <li>
+                  <span className="material-symbols-outlined">mail</span>
+                  <p>{email}</p>
+                </li>
+                <li>
+                  <span className="material-symbols-outlined">smartphone</span>
+                  <p>{phoneNumber}</p>
+                </li>
+                <li>
+                  <span className="material-symbols-outlined">mail</span>
+                  <p>{note}</p>
+                </li>
+              </div>
+              <button
+                className="btn remove-btn"
+                onClick={() => removeContact(id)}
+              >
+                remove contact
+              </button>
             </div>
-            <button
-              className="btn remove-btn"
-              onClick={() => removeContact(id)}
-            >
-              remove contact
-            </button>
-          </div>
-        );
-      })}
-    </section>
+          );
+        })}
+      </section>
+    </>
   );
 };
 

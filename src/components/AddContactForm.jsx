@@ -1,8 +1,33 @@
 import { useContext } from 'react';
-import { ContactContext } from './ContactContainer';
+import { ContactContext } from './ContactHomePage';
+import { useNavigate } from 'react-router-dom';
 
 const AddContact = () => {
-  const { handleChange, handleForm, formRef } = useContext(ContactContext);
+  const { user, setUser, contacts, setContacts } = useContext(ContactContext);
+  const history = useNavigate();
+
+  const handleChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+      id: contacts.length + 1,
+    });
+  };
+
+  const handleForm = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const newUser = Object.fromEntries(formData);
+    setUser(newUser);
+    if (user.note.length > 20) {
+      alert('Note must have 20 character only ');
+      return;
+    }
+    setContacts((prevContact) => [...prevContact, user]);
+    e.currentTarget.reset();
+    history('/');
+  };
 
   return (
     <div className="add-contact">
@@ -16,7 +41,6 @@ const AddContact = () => {
             name="name"
             onChange={handleChange}
             required
-            ref={formRef}
             placeholder="Jhon Lesnar"
           />
         </div>
@@ -52,7 +76,11 @@ const AddContact = () => {
             required
             placeholder="Enter your note"
           />
+          {user?.note.length > 20 && (
+            <div className="warning">Note must be less than 20 character</div>
+          )}
         </div>
+
         <button style={{ width: '100%' }} className="btn" type="submit">
           Add Contact
         </button>

@@ -1,12 +1,11 @@
 import './../style/app.css';
 import Header from './Header';
-import ContactContainer from './ContactContainer';
+import ContactHomePage from './ContactHomePage';
 
 const App = () => {
   return (
     <main>
-      <Header />
-      <ContactContainer />
+      <ContactHomePage />
     </main>
   );
 };

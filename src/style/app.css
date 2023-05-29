@@ -31,6 +31,10 @@ main {
   margin-bottom: 4.4rem;
 }
 
+.links {
+  text-decoration: none;
+}
+
 .add-contact {
   margin-bottom: 4.4rem;
   padding: 2.4rem;
@@ -132,6 +136,24 @@ li {
 .material-symbols-outlined {
   color: #1abc9c;
 }
+
+.warning {
+  color: red;
+  font-size: 1.6rem;
+  margin-bottom: 1.8rem;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 4.8rem;
+}
+
+.list-header h1 {
+  font-size: 3.6rem;
+}
+
 @media (max-width: 70rem) {
   .list-container {
     grid-template-columns: 1fr;
